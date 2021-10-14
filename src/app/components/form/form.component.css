@@ -1,0 +1,85 @@
+.fContainer{
+    
+    background: rgb(255, 255, 255);
+}
+.formNewBudget{
+    width: 80%;
+    margin:  auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+input,select{
+    height: 40px; 
+    width: 200px;
+    margin: 5px auto;
+    text-align: center;
+    border: none;
+    outline: none;
+    border: 1.5px solid rgb(25, 123, 189);
+    border-radius: 50px;
+}
+input:focus,select:focus{
+    border: 1px solid rgb(25, 123, 189);
+}
+.redIn{
+    border: 1px solid rgb(224, 64, 85); 
+}
+.redIn:focus{
+    border: 1px solid rgb(224, 64, 85);
+}
+button{
+    width: 40px; 
+    height: 40px;
+    border: 3px solid rgb(78, 192, 212);
+    box-shadow: 1px 1px 10px 1px rgb(187, 187, 187);
+    margin: 10px auto;
+    color: rgb(78, 192, 212);
+    border-radius: 100%;
+    font-size: 22px;
+    font-weight: bolder;
+}
+button:hover{
+    border: 3px solid rgb(78, 140, 212);
+    color: rgb(78, 140, 212);
+    cursor: pointer;
+}
+button:active{
+    border: 3px solid rgb(78, 109, 212);
+    color: rgb(78, 109, 212);
+    
+}
+.btnRed{
+    border: 3px solid rgb(224, 64, 85);
+    color: rgb(224, 64, 85);
+}
+.btnRed:hover{
+    border: 3px solid rgb(194, 48, 67);
+    color: rgb(194, 48, 67);
+}
+.btnRed:active{
+    border: 3px solid rgb(172, 22, 67);
+    color: rgb(172, 22, 67);
+}
+@media screen and (min-width: 600px) {
+    .formNewBudget{
+
+        display: flex;
+        flex-direction: row;
+
+    } 
+    input,select{
+        height: 40px;
+        width: 20%;
+        border: none;
+        border-bottom:2px solid rgb(132, 225, 241);
+        margin: 10px auto;
+        
+    }
+    .redIn{
+        border: none;
+        border-bottom: 2px solid rgb(224, 64, 85); 
+    }
+    
+}

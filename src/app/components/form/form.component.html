@@ -1,0 +1,28 @@
+<div class="container fContainer">
+    
+    <form (ngSubmit)="f.form.valid && addBudget()" #f="ngForm" class="formNewBudget">    
+        <select name="typeNewBudget" (change)='setTypeOp($event)' [ngClass]='{redIn:typeBudget==="expense"}'>
+            <option value="income" selected>Ingreso</option>
+            <option value="expense" >Egreso</option>
+        </select>
+        <input [ngClass]='{redIn:typeBudget==="expense"}'
+                type="text" 
+                placeholder="Descripcion" 
+                id="descIn" name="descriptionIn" 
+                [(ngModel)]="descriptionIn" 
+                
+                required
+         >
+        <input type="number" 
+            placeholder="1000" 
+            [(ngModel)]="valueIn" 
+            
+            [ngClass]='{redIn:typeBudget==="expense"}' 
+            id="valIn" name="valueIn" 
+            required
+        >
+        <button type="submit" 
+        [ngClass]='{btnRed:typeBudget==="expense"}' >+</button>
+
+    </form>
+</div>

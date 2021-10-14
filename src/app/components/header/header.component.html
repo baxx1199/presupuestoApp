@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="generalBudget">
+        <div class="titlemainBudget">
+            <h2>Presupuesto Disponible</h2>
+            <h1>{{getTotalBudget() | currency:"USD":"$":"1.0-2"}}</h1>
+        </div>
+        
+        <div class="incomeBudget cardBudget">
+            <small class="budgetLabel">Ingresos</small> <small class="valueBudget">{{getIncomes() | currency:"USD":"$":"1.0-2"}}</small> 
+        </div>
+        <div class="expenseBudget cardBudget" >
+            <small class="budgetLabel" >Egresos</small> <small class="valueBudget"> -{{getExpenses()| currency:"USD":"$":"1.0-2"}}</small> <small class="percetage">{{percentageExpenses() | percent}}</small>
+        </div>
+    </div>
+    
+</div>

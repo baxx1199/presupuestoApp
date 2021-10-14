@@ -1,0 +1,87 @@
+
+.generalBudget{
+    
+    height: 30vh;
+    width: 100%;
+    min-height: 250px;
+    background: linear-gradient(45deg, rgb(32, 74, 86),rgb(18, 94, 138),rgba(6, 9, 184, 0.397));
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+    border-bottom: 3px solid white; 
+}
+.titlemainBudget{
+   margin: 3px auto;
+   width: 90%;
+   display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+   border-radius: 50px;
+   background: rgba(255, 255, 255, 0.411);
+   
+}
+.titlemainBudget>h2{
+   margin-top: 5px;
+   font-size: 21px;
+   
+}
+.cardBudget{
+   width: 70%;
+   height: 50px;
+   margin-left: 0;
+   line-height: 50px;
+   background: wheat;
+   border-radius: 0px 50px 50px 0px;
+   display: flex;
+   flex-direction: row;
+   justify-content: left;
+   gap: 10px;
+   font-size: 20px;
+}
+.incomeBudget{
+   
+   background: rgb(64, 192, 224);
+}
+.expenseBudget{
+   
+   /* background: rgb(224, 59, 109); */
+   background: #FC5130;
+   width: 80%;
+   margin-bottom: 10px;
+}
+
+.budgetLabel{
+   
+   width: 40%;
+   margin-left: 5px;
+   font-weight: bold;
+}
+.valueBudget{
+   
+   width: 30%;
+} 
+
+@media screen and (min-width: 400px) {
+   .cardBudget{
+      width: 300px;
+      height: 60px;
+      margin: auto;
+      line-height: 60px;
+      border-radius: 50px;
+   }
+   .titlemainBudget{
+      margin: 3px auto;
+      width: 90%;
+      display: flex;
+       flex-direction: column;
+       justify-content: space-around;
+       gap: 15px;
+       
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.411);
+   }
+   
+ }

@@ -1,0 +1,32 @@
+<div class="container contBudget-list">
+    <div class="incomesList contList">
+        <h1 class="tt tIncome tIncomeMain">Ingresos</h1>
+        <div class="itmes itemsIcomes"   *ngFor='let income of incomesList'>
+            <div> 
+                <div class="itmeU">
+                    <small class='listDescription'>{{income.name}}</small> 
+                    <small class='listvalue tIncome'>{{income.value | currency:"USD":"$":"1.0-2"}}</small>
+                    <div class="contBtn">
+                        <button class="btnDelete" (click)='deleteIncome(income)'>x</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="expenseList contList">
+        <h1 class="tt tExpense tExpenseMain">Egresos</h1>
+        <div class="itmes itemsExpenses"  *ngFor='let expense of expensesList'>
+            <div >
+                <div class="itmeU">
+                    <small class='listDescription'>{{expense.name}}</small> 
+                    <small class='listvalue tExpense'> -{{expense.value | currency:"USD":"$":"1.0-2"}}</small> 
+                    <small class="percetage percentList tExpense">{{ getPercentage(expense.value)| percent}}</small>
+                    <div class="contBtn">
+                        <button class="btnDelete btnExpense" (click)='deleteExpense(expense)'>x</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
