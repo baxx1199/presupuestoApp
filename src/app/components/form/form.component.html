@@ -8,17 +8,17 @@
         <input [ngClass]='{redIn:typeBudget==="expense"}'
                 type="text" 
                 placeholder="Descripcion" 
-                id="descIn" name="descriptionIn" 
+                name="descriptionIn" 
                 [(ngModel)]="descriptionIn" 
-                
+                #descIn
                 required
          >
         <input type="number" 
             placeholder="1000" 
             [(ngModel)]="valueIn" 
-            
+            #valeIn
             [ngClass]='{redIn:typeBudget==="expense"}' 
-            id="valIn" name="valueIn" 
+             name="valueIn" 
             required
         >
         <button type="submit" 

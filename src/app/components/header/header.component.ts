@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IIncome } from 'src/app/services/income.service';
 import { IExpense } from 'src/app/services/expense.service';
-import { Income } from 'src/app/models/income.models';
-import { Expense } from 'src/app/models/expense.model';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private incomeService:IIncome,private expenseService:IExpense) { 
     
-  }
+  } 
 
   ngOnInit(): void { 
     

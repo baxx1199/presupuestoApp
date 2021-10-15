@@ -1,36 +1,26 @@
 import { Income } from "../models/income.models";
 
 export class IIncome{
-    incomes:Income[]=[
-        
-    ];
+    incomes:Income[];
+    constructor(){
+        this.incomes=[];
+    }
 
-    deleteIncome(incomeD :Income){
-        
-        console.log("primero",this.incomes)
-        const incomeIndex:number = this.incomes.indexOf(incomeD);
-        console.log("elemento seleccionado",incomeD)
-        console.log("elemento eliminado",incomeIndex)
-        console.log("elemento eliminado",this.incomes[incomeIndex])
-        this.incomes.splice(incomeIndex,1);
-        this.saveInLocaleStorage();
-        this.setIncomesLocal("desde delet servicio");
-        console.log("segundo",this.incomes)
-        
+    deleteIncome(incomeIndex :number){
+
+            this.incomes.splice(incomeIndex, 1);
+            localStorage.setItem("incomes", JSON.stringify(this.incomes));
         
     }
 
- 
-    saveInLocaleStorage(){
-        
-        let incomeJson:string =JSON.stringify(this.incomes);
-        localStorage.setItem("incomes",incomeJson);
-        
-    }
-    setIncomesLocal(msn:string){
+    setIncomesLocal(): Income[]{
         const incomesInStorage = this.getOfLocaleStorage();
-        this.incomes = incomesInStorage;
-        console.log(msn, incomesInStorage);
+        if(incomesInStorage===null){
+            return this.incomes;
+        }else{
+            this. incomes =  this.getOfLocaleStorage();
+            return this.incomes;
+        }
     }
     getOfLocaleStorage():Income[]{
         let getInfo = localStorage.getItem("incomes")!;
@@ -39,7 +29,7 @@ export class IIncome{
 
     getTotalIncomesValue():number{
         let totalIncome:number=0;
-        this.setIncomesLocal("desde getTotalIncome en servicio");
+        
          this.incomes.forEach(income => {
           totalIncome += income.value;
         });
@@ -47,9 +37,21 @@ export class IIncome{
     }
 
     addNewIncome(descriptionNew:string, valueNew:number){
-        this.setIncomesLocal("desde agregar ingreso en servicio");
-       this.incomes.push( new Income(descriptionNew,valueNew));
-       this.saveInLocaleStorage();
-       this.setIncomesLocal("desde agregar ingreso en servicio segunda vez");
+        this.incomes.push( new Income(descriptionNew,valueNew));
+        
+        let incomesTemp: Income[]=[];
+
+        if(localStorage.getItem("incomes")===null){
+            incomesTemp.push( new Income(descriptionNew,valueNew));
+            
+            localStorage.setItem("incomes", JSON.stringify(incomesTemp));
+        }else{
+            incomesTemp = this.getOfLocaleStorage();
+            
+            incomesTemp.push( new Income(descriptionNew,valueNew));
+            
+            localStorage.setItem("incomes", JSON.stringify(incomesTemp));
+        }
+       
     }
 }

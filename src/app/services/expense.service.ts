@@ -1,44 +1,36 @@
 import { Expense } from "../models/expense.model";
 
 export class IExpense{
-    expense:Expense[]=[
-        
-    ]; 
-    
-   
-    saveInLocaleStorage(){
-        
-        let extenseJson:string =JSON.stringify(this.expense);
-        localStorage.setItem("expense",extenseJson);
-        
-    }
+    expense:Expense[];
+    constructor(){
+        this.expense=[]
+    } 
 
-    
 
     getOfLocaleStorage():Expense[]{
-        let getInfo = localStorage.getItem("expense")!;
-        
+        let getInfo = localStorage.getItem("Expenses")!;
         return JSON.parse(getInfo);
     }
     setExpenseLocal(){
         const expenseInStorage = this.getOfLocaleStorage();
-        this.expense = expenseInStorage;
-        
+        if(expenseInStorage===null){
+            return this.expense;
+        }else{
+            this. expense =  this.getOfLocaleStorage();
+            return this.expense;
+        }
     }
-
-    deleteExpense(expenseD :Expense){
-        
-        const expenseIndex = this.expense.indexOf(expenseD);
-        this.expense.splice(expenseIndex,1);
-        this.saveInLocaleStorage();
-        this.setExpenseLocal();
-        
-        
-    }
+    deleteExpense(expenseIndex :number){
+        console.log(this.expense)
+    
+        this.expense.splice(expenseIndex, 1);
+        localStorage.setItem("Expenses", JSON.stringify(this.expense));
+         
+     }
      
     getTotalExpensesValue(){
         let totalExpenses:number=0;
-        this.setExpenseLocal();
+        
         this.expense.forEach(expenditure =>{
           totalExpenses += expenditure.value;
         });
@@ -46,11 +38,18 @@ export class IExpense{
         
         return totalExpenses;
     }
-
     addNewExpense(descriptionNew:string, valueNew:number){
-        this.setExpenseLocal();
-       this.expense.push( new Expense(descriptionNew,valueNew));
-       this.saveInLocaleStorage();
-       this.setExpenseLocal();
+    this.expense.push( new Expense(descriptionNew,valueNew));
+        let expensesTemp: Expense[]=[];
+
+        if(localStorage.getItem("Expenses")===null){
+            expensesTemp.push( new Expense(descriptionNew,valueNew));
+            localStorage.setItem("Expenses", JSON.stringify(expensesTemp));
+        }else{
+            expensesTemp = this.getOfLocaleStorage();
+            expensesTemp.push( new Expense(descriptionNew,valueNew));
+            localStorage.setItem("Expenses", JSON.stringify(expensesTemp));
+        }
+       
     }
 } 
